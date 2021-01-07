@@ -1,0 +1,31 @@
+version: '3'
+services:
+    influxdb:
+        image: 'influxdb:latest'
+        ports:
+            - '8086:8086'
+        environment:
+            - INFLUXDB_DB=jmeter
+    jmeter:
+        build:
+            context: jmeter
+            args: 
+                    - jmeterVersion=5.2.1
+        network_mode: host
+        environment:
+            - JMETER_TEST=load.jmx
+            - JMETER_RAMPUP=300
+            - JMETER_THREADS=2
+            - JMETER_DURATION=1200
+            - JMETER_URL=http://qa-api.hqric.udrt.com:9001/v1/res-pt/api/v2
+            - JMETER_PROPERTYID=1072066
+        depends_on:
+            - influxdb
+    grafana:
+        build:
+            context: grafana
+        ports:
+            - '3000:3000'
+        depends_on:
+            - influxdb
+            - jmeter

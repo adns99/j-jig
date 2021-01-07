@@ -1,0 +1,8 @@
+# Exclude macOS Files
+.DS_Store
+
+# Exlude JMX Files
+jmeter/test
+
+# Exclude Jenkins Volumes Folder
+volumes/*

@@ -28,4 +28,4 @@ Note: This instructions will be included in the docker-compose as an optional co
     * Local = /Users/[user]/Dev/docker/jjig/volumes/jenkins-master
     * Docker = /var/jenkins_home
 - Admin pass: Within the `volumes/jenkins-master` (secrets/initialAdminPassword)
-- Command: `docker run -p 8080:8080 -v  /Users/adn/Dev/docker/jjig/volumes/jenkins-master:/var/jenkins_home --name jenkins-master jenkins/jenkins:lts`
+- Command: `docker run -p 8080:8080 -v  /Users/[user]/Dev/docker/jjig/volumes/jenkins-master:/var/jenkins_home --name jenkins-master jenkins/jenkins:lts`
